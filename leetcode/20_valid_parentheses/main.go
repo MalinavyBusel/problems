@@ -3,6 +3,8 @@ package _20_valid_parentheses
 func isValid(s string) bool {
 	var stack = make([]byte, 0, 5000)
 
+	bracketPair := map[byte]byte{'}': '{', ']': '[', ')': '('}
+
 	for _, x := range s {
 		switch x {
 		case '[', '{', '(':
@@ -15,11 +17,7 @@ func isValid(s string) bool {
 					return false
 				}
 
-				if stack[len(stack)-1] == '{' && x != '}' {
-					return false
-				} else if stack[len(stack)-1] == '(' && x != ')' {
-					return false
-				} else if stack[len(stack)-1] == '[' && x != ']' {
+				if stack[len(stack)-1] != bracketPair[byte(x)] {
 					return false
 				}
 

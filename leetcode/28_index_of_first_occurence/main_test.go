@@ -27,6 +27,13 @@ func Test_canConstruct(t *testing.T) {
 			needle:   "leeto",
 			want:     -1,
 		},
+		{
+			name:     "caseEqualWords",
+			message:  "when the compared words are the same, the result should be 0",
+			haystack: "code",
+			needle:   "code",
+			want:     0,
+		},
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
